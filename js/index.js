@@ -2,24 +2,28 @@ var rand = function(min, max)
 {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-function shuffle(array) {
-    let counter = array.length;
-
-    // While there are elements in the array
-    while (counter > 0) {
-        // Pick a random index
-        let index = Math.floor(Math.random() * counter);
-
-        // Decrease counter by 1
-        counter--;
-
-        // And swap the last element with it
-        let temp = array[counter];
-        array[counter] = array[index];
-        array[index] = temp;
-    }
-
+function shuffle(array, rounds) {
+	rounds = typeof rounds !== 'undefined' ? rounds : 3;
+	for(var i = 0; i < rounds; i++)
+	{
+		var counter = array.length;
+		while (counter > 0) {
+			var index = Math.floor(Math.random() * counter);
+			counter--;
+			var temp = array[counter];
+			array[counter] = array[index];
+			array[index] = temp;
+		}
+	}
     return array;
+}
+function getChanceList(array){
+	var tmp = []
+	for(var i = 0; i < array.length; i++)
+	{
+		tmp.push(array[i].chance);
+	}
+	return tmp;
 }
 var loadCharacters = function(){
 	var jAll = new JAll();
@@ -254,19 +258,66 @@ JChar.TYPE = {
 }
 function JBlock(blockChar, chance)
 {
-	this.jCharArr = [];
-	this.parent = undefined;
-	this.addJChar = function(jChar)
+	this.jCharArr 	= [];
+	this.parent 	= undefined;
+	this.prev 		= undefined;
+	this.next 		= undefined;
+	this.blockChar 	= blockChar;
+	this.minChance 	= 0.1;
+	this.chance 	= chance < this.minChance ? this.minChance : chance;
+	
+	this.addJChar 	= function(jChar)
 	{
 		this.jCharArr.push(jChar);
 		jChar.parent = this;
 	}
-	this.blockChar = blockChar;
-	
-	this.chance = chance;
 	this.getChance = function()
 	{
-		return this.chance;
+		var x = this.getScore();
+		if(x == 0) {
+			if(this.prev == undefined)
+			{
+				this.chance = 1;
+				
+			}
+			else if(this.prev.chance <= 0.1 || this.prev.chance >= 0.6)
+			{
+				this.chance = 0;
+			}
+			else
+			{
+				//this.chance = 0.1;
+			}
+			return this.chance;
+			
+		}
+		var a = 0.45;
+		var b = 100/Math.PI;
+		var h = -0.5*100;
+		var k = 0.55;
+		
+		var y = a * Math.sin((x-h)/b) + k
+		var chance = x >= 100 ? this.minChance : y;
+		var otherChance = 1 - chance;
+		if(this.next !== undefined)
+		{
+			this.next.chanceChance(otherChance);
+		}
+		this.chance = chance;
+		return chance;
+	}
+	this.chanceChance = function(chance)
+	{
+		if(chance > this.chance){
+			this.chance = chance;
+		}
+		else if(this.chance <= this.minChance){
+			this.chance = this.minChance;
+		}
+		else
+		{
+			this.chance = (this.chance+chance)/2;
+		}
 	}
 	this.getChars = function()
 	{
@@ -289,9 +340,11 @@ function JBlock(blockChar, chance)
 		}
 		return score/this.size();
 	}
+	// More Sorting & Shuffling to do from neighbors.
 	this.getAnswers = function(romaji, hiragana, katakana)
-	{		
+	{
 		var answers = []
+		
 		for(var i = 0; i < this.jCharArr.length; i++)
 		{
 			var jChar = this.jCharArr[i];
@@ -345,21 +398,28 @@ function JAll()
 	this.jBlockArr = [];
 	this.addJBlock = function(jBlock)
 	{
+		if(this.jBlockArr.length > 0)
+		{
+			jBlock.prev = this.jBlockArr[this.jBlockArr.length - 1];
+			jBlock.prev.next = jBlock;
+		}
+		
 		this.jBlockArr.push(jBlock);
 		jBlock.parent = this;
+		
 	}
 	this.getCharacter = function()
 	{
 		var weighed_list = [];
 		for (var i = 0; i < this.jBlockArr.length; i++) {
-			var blocks = this.jBlockArr[i].getChance() * 10;
+			var blocks = this.jBlockArr[i].getChance() * this.jBlockArr.length;
 			 
 			// Loop over the list of items
 			for (var j = 0; j < blocks; j++) {
 				var chars = this.jBlockArr[i].getChars();
 				for (var k = 0; k < chars.length; k++)
 				{
-					for (var m = 0; m < (chars[k].getChance()*25); m++)
+					for (var m = 0; m < (chars[k].getChance()*chars.length); m++)
 					{
 						weighed_list.push(chars[k]);
 					}
@@ -477,6 +537,7 @@ var showNewQuestion = function(){
 	}
 	//var charScore = (q.jChar.getScore()*10);
 	updateScore();
+	console.log(getChanceList(chars.jBlockArr));
 }
 
 $(document).ready(function(){
@@ -486,6 +547,7 @@ $(document).ready(function(){
 		chars.load();
 	}
 	showNewQuestion();
+	
 	$(".A").click(function(){
 		var correct = q.answer($(this).text());
 		if($(this).hasClass("disabled")){return;}
