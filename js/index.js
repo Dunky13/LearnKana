@@ -314,6 +314,28 @@ function JBlock(blockChar, chance)
 	{
 		return this.jCharArr[i];
 	}
+	this.getRandom = function(i)
+	{
+		var randomList = [];
+		i = typeof i !== 'undefined' ? i : 1;
+		
+		if(this.size() < i)
+		{
+			var j = i - this.size();
+			if(this.prev !== undefined)
+				randomList = this.prev.getRandom(j);
+			else if(this.next !== undefined)
+				randomList = this.next.getRandom(j);
+			i -= j;
+		}
+		
+		while(randomList.length < i)
+		{
+			var randChar = this.get(rand(0,this.size()-1));
+			if(randomList.indexOf(randChar)> -1)
+				randomList.push(randChar);
+		}
+	}
 	this.getScore = function()
 	{
 		var score = 0;
@@ -326,15 +348,27 @@ function JBlock(blockChar, chance)
 	// More Sorting & Shuffling to do from neighbors.
 	this.getAnswers = function(romaji, hiragana, katakana)
 	{
+		var numOfAnswers = 10;
 		var answers = []
+		var tmpCharArr = this.jCharArr;
 		
-		for(var i = 0; i < this.jCharArr.length; i++)
+		while(tmpCharArr.length < numOfAnswers/2){
+			if(this.prev !== undefined)
+				tmpCharArr = tmpCharArr.concat(this.prev.getRandom((numOfAnswers/2)-tmpCharArr.length));
+			else if(this.next !== undefined)
+				tmpCharArr = tmpCharArr.concat(this.next.getRandom((numOfAnswers/2)-tmpCharArr.length));
+			else
+				break;
+		}
+		
+		for(var i = 0; i < tmpCharArr.length; i++)
 		{
-			var jChar = this.jCharArr[i];
+			var jChar = tmpCharArr[i];
 			if(romaji)		answers.push(jChar.romaji);
 			if(hiragana) 	answers.push(jChar.hiragana);
 			if(katakana)	answers.push(jChar.katakana);
 		}
+			
 		return shuffle(answers);
 	}
 }
@@ -375,7 +409,7 @@ function Q(qa,jChar){
 		}
 		else
 		{
-			var a = false;
+			correct = undefined;
 		}
 		return correct;
 	}
@@ -584,13 +618,25 @@ var showNewQuestion = function(){
 	console.log(getChanceList(chars.jBlockArr));
 }
 
+var nextQuestion = function()
+{
+	var start = new Date().getTime();
+	showNewQuestion();
+	if(window.location.hash.substr(1) == "devel")
+	{
+		var end = new Date().getTime();
+		var time = end - start;
+		alert('Execution time: ' + time);
+	}
+}
+
 $(document).ready(function(){
 	chars = loadCharacters();
 	q = undefined;//chars.getQuestion();
 	if(localStorage.japanese){
 		chars.load();
 	}
-	showNewQuestion();
+	nextQuestion();
 	
 	$(".A").click(function(){
 		var correct = q.answer($(this).text());
@@ -620,7 +666,7 @@ $(document).ready(function(){
 	});
 	$("#next").click(function(){
 		if(!$(this).hasClass("disabled")){
-			showNewQuestion();
+			nextQuestion()
 		}
 	});
 });
