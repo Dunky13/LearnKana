@@ -273,51 +273,11 @@ function JBlock(blockChar, chance)
 	}
 	this.getChance = function()
 	{
-		var x = this.getScore();
-		if(x == 0) {
-			if(this.prev == undefined)
-			{
-				this.chance = 1;
-				
-			}
-			else if(this.prev.chance <= 0.1 || this.prev.chance >= 0.6)
-			{
-				this.chance = 0;
-			}
-			else
-			{
-				//this.chance = 0.1;
-			}
-			return this.chance;
-			
-		}
-		var a = 0.45;
-		var b = 100/Math.PI;
-		var h = -0.5*100;
-		var k = 0.55;
-		
-		var y = a * Math.sin((x-h)/b) + k
-		var chance = x >= 100 ? this.minChance : y;
-		var otherChance = 1 - chance;
-		if(this.next !== undefined)
-		{
-			this.next.chanceChance(otherChance);
-		}
-		this.chance = chance;
-		return chance;
+		return this.chance;
 	}
-	this.chanceChance = function(chance)
+	this.setChance = function(c)
 	{
-		if(chance > this.chance){
-			this.chance = chance;
-		}
-		else if(this.chance <= this.minChance){
-			this.chance = this.minChance;
-		}
-		else
-		{
-			this.chance = (this.chance+chance)/2;
-		}
+		this.chance = c;
 	}
 	this.getChars = function()
 	{
@@ -390,17 +350,75 @@ function Q(qa,jChar){
 			jChar.kFalse();
 			correct = undefined;
 		}
+		else
+		{
+			var a = false;
+		}
 		return correct;
 	}
 }
 function JAll()
 {
 	this.jBlockArr = [];
+	this.currentBlock = 0;
+	this.getCurrentBlock = function()
+	{
+		return this.jBlockArr[this.currentBlock];
+	}
+	this.calculateNewChances = function()
+	{
+		var scoreCurrentBlock = this.getCurrentBlock().getScore();
+		if(scoreCurrentBlock < 80) return;
+		else
+		{
+			this.currentBlock++;
+		}
+		if(this.currentBlock == this.size()-1)
+		{
+			this.setAllChance(1/this.size());
+		}
+		else
+		{
+			for(var x = this.size()-1, i=this.currentBlock; i >= 0; i--, x--)
+			{
+				this.setChance(i, this.calculateBlockChance(x));
+			}
+			for(var i = this.currentBlock + 1; i < this.size(); i++){
+				this.setChance(i, 0);
+			}
+		}
+			
+	}
+	this.setChance = function(i,c)
+	{
+		this.jBlockArr[i].setChance(c);
+	}
+	this.setAllChance = function(c)
+	{
+		for(var i = 0; i < this.size(); i++)
+		{
+			this.setChance(i, c);
+		}
+	}
+	this.calculateBlockChance = function(x)
+	{
+		x -= (this.size()/2);
+		var a = 2*Math.PI*x;
+		var b = a/this.size();
+		var c = Math.tanh(b)+1;
+		var d = c/2;
+		
+		return d;
+	}
+	this.size = function()
+	{
+		return this.jBlockArr.length;
+	}
 	this.addJBlock = function(jBlock)
 	{
-		if(this.jBlockArr.length > 0)
+		if(this.size() > 0)
 		{
-			jBlock.prev = this.jBlockArr[this.jBlockArr.length - 1];
+			jBlock.prev = this.jBlockArr[this.size() - 1];
 			jBlock.prev.next = jBlock;
 		}
 		
@@ -410,9 +428,10 @@ function JAll()
 	}
 	this.getCharacter = function()
 	{
+		this.calculateNewChances();
 		var weighed_list = [];
-		for (var i = 0; i < this.jBlockArr.length; i++) {
-			var blocks = this.jBlockArr[i].getChance() * this.jBlockArr.length;
+		for (var i = 0; i < this.size(); i++) {
+			var blocks = this.jBlockArr[i].getChance() * this.size();
 			 
 			// Loop over the list of items
 			for (var j = 0; j < blocks; j++) {
@@ -560,7 +579,6 @@ $(document).ready(function(){
 			$(".RW .correctness").toggleClass("fa-times",false);
 			$(".A").toggleClass("disabled",true);
 			$(this).toggleClass("label-success",true).toggleClass("label-warning",false);
-			updateScore();
 			$("#next").toggleClass("disabled", false);
 			//setTimeout(function(){
 			//	showNewQuestion();
@@ -573,6 +591,7 @@ $(document).ready(function(){
 			$(this).toggleClass("label-danger",true);
 			$("#next").toggleClass("disabled", true);
 		}
+		updateScore();
 	});
 	$("#next").click(function(){
 		if(!$(this).hasClass("disabled")){
