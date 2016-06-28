@@ -2,6 +2,19 @@ var rand = function(min, max)
 {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+function round(value, step, dir) {
+    step || (step = 1.0);
+	dir || (dir = 0);
+    var inv = 1.0 / step;
+	var round = 0;
+	if(dir == 1)
+		round = Math.ceil(value * inv) / inv;
+	else if(dir == -1)
+		round = Math.floor(value * inv) / inv;
+	else
+		round = Math.round(value * inv) / inv;
+    return round;
+}
 function shuffle(array, rounds) {
 	rounds = typeof rounds !== 'undefined' ? rounds : 3;
 	for(var i = 0; i < rounds; i++)
@@ -263,7 +276,7 @@ function JBlock(blockChar, chance)
 	this.prev 		= undefined;
 	this.next 		= undefined;
 	this.blockChar 	= blockChar;
-	this.minChance 	= 0.1;
+	this.minChance 	= 0;
 	this.chance 	= chance < this.minChance ? this.minChance : chance;
 	
 	this.addJChar 	= function(jChar)
@@ -361,33 +374,51 @@ function JAll()
 {
 	this.jBlockArr = [];
 	this.currentBlock = 0;
+	this.getBlock = function(i)
+	{
+		return this.jBlockArr[i];
+	}
 	this.getCurrentBlock = function()
 	{
-		return this.jBlockArr[this.currentBlock];
+		return this.getBlock(this.currentBlock);
+	}
+	this.findLastActiveBlock = function()
+	{
+		while(this.getCurrentBlock().getScore() > 90)
+		{
+			this.currentBlock++;
+		}
+		this.calculateNewChances();
 	}
 	this.calculateNewChances = function()
 	{
 		var scoreCurrentBlock = this.getCurrentBlock().getScore();
-		if(scoreCurrentBlock < 80) return;
-		else
+		
+		if(scoreCurrentBlock > 90)
 		{
-			this.currentBlock++;
+			this.findLastActiveBlock();
+			return;
 		}
-		if(this.currentBlock == this.size()-1)
+		
+		//SET HEAD TO: #/2+0.5
+		//SET 2nd TO: round(0.1212*#+0.3333,0.25)
+		
+		//SET 0.5 TO: round((T#-2)/2,1,1)
+		//SET 0.25 TO: round((T#-2)/2,1,-1)
+		
+		for(var i = this.currentBlock; i >= 0; i--)
 		{
-			this.setAllChance(1/this.size());
+			var chance = 0;
+			if(i == this.currentBlock)
+				chance = ((i+1)/2+0.5);
+			else if(i == this.currentBlock - 1)
+				chance = round(0.1212*(i+1)+0.3333,0.25);
+			else if(i <= this.currentBlock - 2 && i >= round((this.currentBlock-2)/2,1,1))
+				chance = 0.5
+			else
+				chance = 0.25
+			this.setChance(i,chance/(this.currentBlock+1));
 		}
-		else
-		{
-			for(var x = this.size()-1, i=this.currentBlock; i >= 0; i--, x--)
-			{
-				this.setChance(i, this.calculateBlockChance(x));
-			}
-			for(var i = this.currentBlock + 1; i < this.size(); i++){
-				this.setChance(i, 0);
-			}
-		}
-			
 	}
 	this.setChance = function(i,c)
 	{
@@ -418,7 +449,7 @@ function JAll()
 	{
 		if(this.size() > 0)
 		{
-			jBlock.prev = this.jBlockArr[this.size() - 1];
+			jBlock.prev = this.getBlock(this.size() - 1);
 			jBlock.prev.next = jBlock;
 		}
 		
@@ -431,11 +462,11 @@ function JAll()
 		this.calculateNewChances();
 		var weighed_list = [];
 		for (var i = 0; i < this.size(); i++) {
-			var blocks = this.jBlockArr[i].getChance() * this.size();
+			var blocks = this.getBlock(i).getChance() * this.size();
 			 
 			// Loop over the list of items
 			for (var j = 0; j < blocks; j++) {
-				var chars = this.jBlockArr[i].getChars();
+				var chars = this.getBlock(i).getChars();
 				for (var k = 0; k < chars.length; k++)
 				{
 					for (var m = 0; m < (chars[k].getChance()*chars.length); m++)
@@ -508,6 +539,7 @@ function JAll()
 				}
 			}
 		}
+		this.findLastActiveBlock();
 	}
 }
 var setScore = function(obj, score){
