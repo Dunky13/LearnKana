@@ -292,6 +292,16 @@ function JBlock(blockChar, chance)
 	{
 		this.chance = c;
 	}
+	this.getNumOfChar = function()
+	{
+		return this.jCharArr.length;
+	}
+	this.getChar = function(i)
+	{
+		if(i < 0 || i >= this.jCharArr.length)
+			return undefined;
+		return this.jCharArr[i];
+	}
 	this.getChars = function()
 	{
 		return this.jCharArr;
@@ -424,23 +434,6 @@ function JAll()
 	{
 		this.jBlockArr[i].setChance(c);
 	}
-	this.setAllChance = function(c)
-	{
-		for(var i = 0; i < this.size(); i++)
-		{
-			this.setChance(i, c);
-		}
-	}
-	this.calculateBlockChance = function(x)
-	{
-		x -= (this.size()/2);
-		var a = 2*Math.PI*x;
-		var b = a/this.size();
-		var c = Math.tanh(b)+1;
-		var d = c/2;
-		
-		return d;
-	}
 	this.size = function()
 	{
 		return this.jBlockArr.length;
@@ -461,21 +454,21 @@ function JAll()
 	{
 		this.calculateNewChances();
 		var weighed_list = [];
-		for (var i = 0; i < this.size(); i++) {
-			var blocks = this.getBlock(i).getChance() * this.size();
-			 
-			// Loop over the list of items
-			for (var j = 0; j < blocks; j++) {
-				var chars = this.getBlock(i).getChars();
-				for (var k = 0; k < chars.length; k++)
-				{
-					for (var m = 0; m < (chars[k].getChance()*chars.length); m++)
-					{
-						weighed_list.push(chars[k]);
-					}
+		for(var i = 0; i <= this.currentBlock; i++)
+		{
+			var jBlock = this.getBlock(i);
+			var jBlockChance = jBlock.getChance() * 10;
+			for(var j = 0; j < jBlock.getNumOfChar(); j++)
+			{
+				var jChar = jBlock.getChar(j);
+				var jCharChance = jChar.getChance() * 100;
+				for(var k = 0; k < jBlockChance * jCharChance; k++){
+					weighed_list.push(jChar);
 				}
 			}
+			
 		}
+		
 		return weighed_list[rand(0, weighed_list.length-1)];
 	};
 	this.getQuestion = function()
