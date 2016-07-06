@@ -525,9 +525,10 @@ function JAll()
 		return new Q(qa,jChar);
 		
 	}
-	this.save = function()
+	this.getJSON = function()
 	{
 		var saveObj = {};
+
 		for(var i = 0; i < this.jBlockArr.length; i++)
 		{
 			var jBlock = this.jBlockArr[i];
@@ -538,17 +539,31 @@ function JAll()
 				var chrData = {};
 				chrData["hScore"] = jChar.hScore;
 				chrData["kScore"] = jChar.kScore;
-				
+
 				block[jChar.romaji] = chrData;
 			}
 			saveObj[jBlock.blockChar] = block;
 		}
-		localStorage.japanese = JSON.stringify(saveObj);
+		return JSON.stringify({timestamp: new Date().getTime(), data: saveObj});
+	};
+	this.save = function(jsonData)
+	{
+		var saveObj = jsonData || this.getJSON();
+		localStorage.japanese = saveObj ;
 		return saveObj;
 	}
-	this.load = function()
+	this.load = function(externalJsonData)
 	{
-		var saveObj = JSON.parse(localStorage.japanese);
+		var nullTime 			= JSON.stringify({timestamp: 0});
+		var externalJsonData 	= externalJsonData || nullTime;
+		var internalJsonData 	= localStorage.japanese || nullTime;
+		var loadExternal 		= JSON.parse(externalJsonData);
+		var loadInternal 		= JSON.parse(internalJsonData);
+
+ 		var newestData			= loadExternal.timestamp > loadInternal.timestamp ? loadExternal : loadInternal;
+		if(newestData.timestamp == 0) return;
+
+		var saveObj = newestData.data;
 		for(var i = 0; i < this.jBlockArr.length; i++)
 		{
 			var jBlock = this.jBlockArr[i];
@@ -617,19 +632,127 @@ var showNewQuestion = function(){
 	updateScore();
 	console.log(getChanceList(chars.jBlockArr));
 }
-
+var printDebug = function(str)
+{
+	if(window.location.hash.substr(1) == "devel")
+	{
+		alert(str);
+	}
+}
 var nextQuestion = function()
 {
 	var start = new Date().getTime();
 	showNewQuestion();
-	if(window.location.hash.substr(1) == "devel")
-	{
-		var end = new Date().getTime();
-		var time = end - start;
-		alert('Execution time: ' + time);
-	}
+	var end = new Date().getTime();
+	var time = end - start;
+	printDebug('Execution time: ' + time);
 }
+var GApi = function(){
+	this.clientId 	= "70842474105-h9e3dv7a6kfv3jtdcr6f8fnjv9o6nfla.apps.googleusercontent.com";
+	this.scopes 	= "https://www.googleapis.com/auth/drive.appdata";
+	this.data 		= {};
+	this.data.name 	= "LearnKanaProgress.txt";
+	this.parents 	= ["appDataFolder"];
+	this.firstLoad	= true;
+	this.findFileId = function(){
+		var that = this;
+		gapi.client.drive.files.list({q: "name='"+that.data.name+"'", spaces: that.parents}).execute(function(response)
+		{
+			var exists = response.files.length || false;
+			if(!exists)
+			{
+				gapi.client.drive.files.create({
+					name: that.data.name,
+					parents: that.parents,
+					fields: 'id'
+				}).execute(function(response){
+					that.data.id = response.id;
+				});
+			}
+			else{
+				that.data.id = response.files[0].id;
+			}
+			if(that.firstLoad){
+				that.loadFromDrive();
+				that.firstLoad = false;
+			}
+		});
+		return this.data.id;
+	};
+	this.update = function(text){
+		var auth_token = gapi.auth.getToken().access_token;
 
+		const boundary = '-------314159265358979323846';
+		const delimiter = "\r\n--" + boundary + "\r\n";
+		const close_delim = "\r\n--" + boundary + "--";
+
+		var metadata = { 
+			description : 'savefile for my game',
+			'mimeType': 'application/json'
+		};  
+
+		var multipartRequestBody =
+			delimiter +  'Content-Type: application/json\r\n\r\n' +
+			JSON.stringify(metadata) +
+			delimiter + 'Content-Type: application/json\r\n\r\n' +
+			text +
+			close_delim;
+
+		gapi.client.request({ 
+			'path': '/upload/drive/v3/files/'+this.data.id,
+			'method': 'PATCH',
+			'params': {'fileId': this.data.id, 'uploadType': 'multipart'},
+			'headers': { 'Content-Type': 'multipart/form-data; boundary="' + boundary + '"', 'Authorization': 'Bearer ' + auth_token, },
+			'body': multipartRequestBody 
+		}).execute(function(file) {
+			console.log("Wrote to file " + file.name + " id: " + file.id); 
+		}); 	
+	};
+	this.saveToDrive = function()
+	{
+		var charsJSON = chars.getJSON();
+		chars.save(charsJSON);
+		this.update(charsJSON);
+	}
+	this.loadFromDrive = function(){
+		gapi.client.drive.files.get({fileId: this.data.id, alt: "media"}).execute(function(f){
+			chars.load(JSON.stringify(f.result));
+		});	
+	};
+
+	this.getAccessToken = function()
+	{
+		if(typeof this.authorized !== undefined){
+			return gapi.auth.getToken().access_token;
+		}
+	}
+
+	this.authorizedFunc = function(res)
+	{
+		this.authorized = res;
+		var that = this;
+		gapi.client.load('drive', 'v3', function(res){that.findFileId()})
+	}
+	this.checkAuth = function(){
+		var config = {
+			client_id:	this.clientId,
+			scope:		this.scopes,
+			immediate: 		true
+		}
+		var that = this;
+		gapi.auth.authorize(config, function(res){that.authorizedFunc(res)});
+	}
+	this.checkAuth();
+}
+function onSignIn(googleUser) {
+	g = new GApi();
+}
+function signOut() {
+	var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+		console.log('User signed out.');
+	});
+}
 $(document).ready(function(){
 	chars = loadCharacters();
 	q = undefined;//chars.getQuestion();
@@ -668,5 +791,9 @@ $(document).ready(function(){
 		if(!$(this).hasClass("disabled")){
 			nextQuestion()
 		}
+	});
+	$(window).on('beforeunload', function(){
+		g.saveToDrive();
+		//return "Are you sure you want to leave?";
 	});
 });

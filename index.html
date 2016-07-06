@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<meta name="google-signin-client_id" content="70842474105-h9e3dv7a6kfv3jtdcr6f8fnjv9o6nfla.apps.googleusercontent.com" />
+	<meta name="google-signin-cookiepolicy" content="single_host_origin" />
+	<meta name="google-signin-callback" content="signinCallback" />
+	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/drive.appdata" />
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Learn Hiragana & Katakana</title>
 
@@ -53,13 +60,16 @@
 	</style>
   </head>
   <body>
+  <a href="https://github.com/Dunky13/LearnKana"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
     <div class="container">
 		<div class="page-header">
 			<h1 class="text-center">Learn Hiragana & Katakana</h1>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-4"></div>
+				<div class="col-xs-1"></div>
+				<div class="col-xs-2"><div class="g-signin2" data-onsuccess="onSignIn"></div></div>
+				<div class="col-xs-1"></div>
 				<div class="col-xs-4 Q text-center" id="Q">Q</div>
 				<div class="col-xs-1 RW text-center"><i class="fa correctness"></i></div>
 				<div class="col-xs-2"><button id="next" type="button" class="btn btn-lg btn-primary NXT">Next</button></div>
@@ -135,6 +145,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/msgpack-lite/0.1.20/msgpack.min.js"></script>
+	<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 	<script src="js/index.js"></script>
   </body>
 </html>
