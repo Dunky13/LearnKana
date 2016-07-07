@@ -40,9 +40,10 @@ function getChanceList(array){
 }
 var loadCharacters = function(){
 	var jAll = new JAll();
-	
+
 	var vowelBlock = new JBlock('v',1);
 	jAll.addJBlock(vowelBlock);
+	vowelBlock.setAchievementID('CgkI-byp9IcCEAIQAQ');
 	vowelBlock.addJChar(new JChar("a", "あ", "ア"));
 	vowelBlock.addJChar(new JChar("i", "い", "イ"));
 	vowelBlock.addJChar(new JChar("u", "う", "ウ"));
@@ -51,6 +52,7 @@ var loadCharacters = function(){
 	
 	var kBlock = new JBlock('k',0);
 	jAll.addJBlock(kBlock);
+	kBlock.setAchievementID('CgkI-byp9IcCEAIQAg');
 	kBlock.addJChar(new JChar("ka", "か", "カ"));
 	kBlock.addJChar(new JChar("ki", "き", "キ"));
 	kBlock.addJChar(new JChar("ku", "く", "ク"));
@@ -59,6 +61,7 @@ var loadCharacters = function(){
 
 	var sBlock = new JBlock('s',0);
 	jAll.addJBlock(sBlock);
+	sBlock.setAchievementID('CgkI-byp9IcCEAIQAw');
 	sBlock.addJChar(new JChar("sa", "さ", "サ"));
 	sBlock.addJChar(new JChar("shi", "し", "シ"));
 	sBlock.addJChar(new JChar("su", "す", "ス"));
@@ -67,6 +70,7 @@ var loadCharacters = function(){
 
 	var tBlock = new JBlock('t',0);
 	jAll.addJBlock(tBlock);
+	tBlock.setAchievementID('CgkI-byp9IcCEAIQBA');
 	tBlock.addJChar(new JChar("ta", "た", "タ"));
 	tBlock.addJChar(new JChar("chi", "ち", "チ"));
 	tBlock.addJChar(new JChar("tsu", "つ", "ツ"));
@@ -75,6 +79,7 @@ var loadCharacters = function(){
 	
 	var nBlock = new JBlock('n',0);
 	jAll.addJBlock(nBlock);
+	nBlock.setAchievementID('CgkI-byp9IcCEAIQBQ');
 	nBlock.addJChar(new JChar("na", "な", "ナ"));
 	nBlock.addJChar(new JChar("ni", "に", "ニ"));
 	nBlock.addJChar(new JChar("nu", "ぬ", "ヌ"));
@@ -83,6 +88,7 @@ var loadCharacters = function(){
 	
 	var hBlock = new JBlock('h',0);
 	jAll.addJBlock(hBlock);
+	hBlock.setAchievementID('CgkI-byp9IcCEAIQBg');
 	hBlock.addJChar(new JChar("ha", "は", "ハ"));
 	hBlock.addJChar(new JChar("hi", "ひ", "ヒ"));
 	hBlock.addJChar(new JChar("fu", "ふ", "フ"));
@@ -91,6 +97,7 @@ var loadCharacters = function(){
 	
 	var mBlock = new JBlock('m',0);
 	jAll.addJBlock(mBlock);
+	mBlock.setAchievementID('CgkI-byp9IcCEAIQBw');
 	mBlock.addJChar(new JChar("ma", "ま", "マ"));
 	mBlock.addJChar(new JChar("mi", "み", "ミ"));
 	mBlock.addJChar(new JChar("mu", "む", "ム"));
@@ -99,12 +106,14 @@ var loadCharacters = function(){
 	
 	var yBlock = new JBlock('y',0);
 	jAll.addJBlock(yBlock);
+	yBlock.setAchievementID('CgkI-byp9IcCEAIQCA');
 	yBlock.addJChar(new JChar("ya", "や", "ヤ"));
 	yBlock.addJChar(new JChar("yu", "ゆ", "ユ"));
 	yBlock.addJChar(new JChar("yo", "よ", "ヨ"));
-	
+
 	var rBlock = new JBlock('r',0);
 	jAll.addJBlock(rBlock);
+	rBlock.setAchievementID('CgkI-byp9IcCEAIQCQ');
 	rBlock.addJChar(new JChar("ra", "ら", "ラ"));
 	rBlock.addJChar(new JChar("ri", "り", "リ"));
 	rBlock.addJChar(new JChar("ru", "る", "ル"));
@@ -113,12 +122,14 @@ var loadCharacters = function(){
 	
 	var vowelBlock = new JBlock('w',0);
 	jAll.addJBlock(vowelBlock);
+	vowelBlock.setAchievementID('CgkI-byp9IcCEAIQCg');
 	vowelBlock.addJChar(new JChar("wa", "わ", "ワ"));
 	vowelBlock.addJChar(new JChar("wo", "を", "ヲ"));
 	vowelBlock.addJChar(new JChar("n", "ん", "ン"));
 	
 	var gBlock = new JBlock('g',0);
 	jAll.addJBlock(gBlock);
+	gBlock.setAchievementID('CgkI-byp9IcCEAIQCw');
 	gBlock.addJChar(new JChar("ga", "が", "ガ"));
 	gBlock.addJChar(new JChar("gi", "ぎ", "ギ"));
 	gBlock.addJChar(new JChar("gu", "ぐ", "グ"));
@@ -127,6 +138,7 @@ var loadCharacters = function(){
 	
 	var zBlock = new JBlock('z',0);
 	jAll.addJBlock(zBlock);
+	zBlock.setAchievementID('CgkI-byp9IcCEAIQDA');
 	zBlock.addJChar(new JChar("za", "ざ", "ザ"));
 	zBlock.addJChar(new JChar("ji (z)", "じ", "ジ"));
 	zBlock.addJChar(new JChar("zu", "ず", "ズ"));
@@ -135,6 +147,7 @@ var loadCharacters = function(){
 	
 	var dBlock = new JBlock('d',0);
 	jAll.addJBlock(dBlock);
+	dBlock.setAchievementID('CgkI-byp9IcCEAIQDQ');
 	dBlock.addJChar(new JChar("da", "だ", "ダ"));
 	dBlock.addJChar(new JChar("ji (d)", "ぢ", "ヂ"));
 	dBlock.addJChar(new JChar("zu", "づ", "ヅ"));
@@ -143,6 +156,7 @@ var loadCharacters = function(){
 	
 	var bBlock = new JBlock('b',0);
 	jAll.addJBlock(bBlock);
+	bBlock.setAchievementID('CgkI-byp9IcCEAIQDw');
 	bBlock.addJChar(new JChar("ba", "ば", "バ"));
 	bBlock.addJChar(new JChar("bi", "び", "ビ"));
 	bBlock.addJChar(new JChar("bu", "ぶ", "ブ"));
@@ -151,6 +165,7 @@ var loadCharacters = function(){
 	
 	var pBlock = new JBlock('p',0);
 	jAll.addJBlock(pBlock);
+	pBlock.setAchievementID('CgkI-byp9IcCEAIQDw');
 	pBlock.addJChar(new JChar("pa", "ぱ", "パ"));
 	pBlock.addJChar(new JChar("pi", "ぴ", "ピ"));
 	pBlock.addJChar(new JChar("pu", "ぷ", "プ"));
@@ -160,75 +175,88 @@ var loadCharacters = function(){
 	
 	var kyBlock = new JBlock('ky',0);
 	jAll.addJBlock(kyBlock);
+	kyBlock.setAchievementID('CgkI-byp9IcCEAIQEA');
 	kyBlock.addJChar(new JChar("kya", "きゃ", "キャ"));
 	kyBlock.addJChar(new JChar("kyu", "きゅ", "キュ"));
 	kyBlock.addJChar(new JChar("kyo", "きょ", "キョ"));
 	
 	var shBlock = new JBlock('sh',0);
 	jAll.addJBlock(shBlock);
+	shBlock.setAchievementID('CgkI-byp9IcCEAIQEQ');
 	shBlock.addJChar(new JChar("sha", "しゃ", "シャ"));
 	shBlock.addJChar(new JChar("shu", "しゅ", "シュ"));
 	shBlock.addJChar(new JChar("sho", "しょ", "ショ"));
 	
 	var chBlock = new JBlock('ch',0);
 	jAll.addJBlock(chBlock);
+	chBlock.setAchievementID('CgkI-byp9IcCEAIQEg');
 	chBlock.addJChar(new JChar("cha", "ちゃ", "チャ"));
 	chBlock.addJChar(new JChar("chu", "ちゅ", "チュ"));
 	chBlock.addJChar(new JChar("cho", "ちょ", "チョ"));
-	
+
 	var nyBlock = new JBlock('ny',0);
 	jAll.addJBlock(nyBlock);
+	nyBlock.setAchievementID('CgkI-byp9IcCEAIQEw');
 	nyBlock.addJChar(new JChar("nya", "にゃ", "ニャ"));
 	nyBlock.addJChar(new JChar("nyu", "にゅ", "ニュ"));
 	nyBlock.addJChar(new JChar("nyo", "にょ", "ニョ"));
 	
 	var hyBlock = new JBlock('hy',0);
 	jAll.addJBlock(hyBlock);
+	hyBlock.setAchievementID('CgkI-byp9IcCEAIQFA');
 	hyBlock.addJChar(new JChar("hya", "ひゃ", "ヒャ"));
 	hyBlock.addJChar(new JChar("hyu", "ひゅ", "ヒュ"));
 	hyBlock.addJChar(new JChar("hyo", "ひょ", "ヒョ"));
 	
 	var myBlock = new JBlock('my',0);
 	jAll.addJBlock(myBlock);
+	myBlock.setAchievementID('CgkI-byp9IcCEAIQFQ');
 	myBlock.addJChar(new JChar("mya", "みゃ", "ミャ"));
 	myBlock.addJChar(new JChar("myu", "みゅ", "ミュ"));
 	myBlock.addJChar(new JChar("myo", "みょ", "ミョ"));
 	
 	var ryBlock = new JBlock('ry',0);
 	jAll.addJBlock(ryBlock);
+	ryBlock.setAchievementID('CgkI-byp9IcCEAIQFg');
 	ryBlock.addJChar(new JChar("rya", "りゃ", "リャ"));
 	ryBlock.addJChar(new JChar("ryu", "りゅ", "リュ"));
 	ryBlock.addJChar(new JChar("ryo", "りょ", "リョ"));
 	
 	var gyBlock = new JBlock('gy',0);
 	jAll.addJBlock(gyBlock);
+	gyBlock.setAchievementID('CgkI-byp9IcCEAIQFw');
 	gyBlock.addJChar(new JChar("gya", "ぎゃ", "ギャ"));
 	gyBlock.addJChar(new JChar("gyu", "ぎゅ", "ギュ"));
 	gyBlock.addJChar(new JChar("gyo", "ぎょ", "ギョ"));
 	
 	var zjBlock = new JBlock('zj',0);
 	jAll.addJBlock(zjBlock);
+	zjBlock.setAchievementID("CgkI-byp9IcCEAIQGA");
 	zjBlock.addJChar(new JChar("ja (z)", "じゃ", "ジャ"));
 	zjBlock.addJChar(new JChar("ju (z)", "じゅ", "ジュ"));
 	zjBlock.addJChar(new JChar("jo (z)", "じょ", "ジョ"));
 	
 	var djBlock = new JBlock('dj',0);
 	jAll.addJBlock(djBlock);
+	djBlock.setAchievementID("CgkI-byp9IcCEAIQGQ");
 	djBlock.addJChar(new JChar("ja (d)", "ぢゃ", "ヂャ"));
 	djBlock.addJChar(new JChar("ju (d)", "ぢゅ", "ヂュ"));
 	djBlock.addJChar(new JChar("jo (d)", "ぢょ", "ヂョ"));
 	
 	var byBlock = new JBlock('by',0);
 	jAll.addJBlock(byBlock);
+	byBlock.setAchievementID("CgkI-byp9IcCEAIQGg");
 	byBlock.addJChar(new JChar("bya", "びゃ", "ビャ"));
 	byBlock.addJChar(new JChar("byu", "びゅ", "ビュ"));
 	byBlock.addJChar(new JChar("byo", "びょ", "ビョ"));
 	
 	var pyBlock = new JBlock('py',0);
 	jAll.addJBlock(pyBlock);
+	pyBlock.setAchievementID("CgkI-byp9IcCEAIQGw");
 	pyBlock.addJChar(new JChar("pya", "ぴゃ", "ピャ"));
 	pyBlock.addJChar(new JChar("pyu", "ぴゅ", "ピュ"));
 	pyBlock.addJChar(new JChar("pyo", "ぴょ", "ピョ"));
+
 
 	return jAll
 }
@@ -271,14 +299,14 @@ JChar.TYPE = {
 }
 function JBlock(blockChar, chance)
 {
-	this.jCharArr 	= [];
-	this.parent 	= undefined;
-	this.prev 		= undefined;
-	this.next 		= undefined;
-	this.blockChar 	= blockChar;
-	this.minChance 	= 0;
-	this.chance 	= chance < this.minChance ? this.minChance : chance;
-	
+	this.jCharArr 		= [];
+	this.parent 		= undefined;
+	this.prev 			= undefined;
+	this.next 			= undefined;
+	this.blockChar 		= blockChar;
+	this.minChance 		= 0;
+	this.chance 		= chance < this.minChance ? this.minChance : chance;
+	this.achievementId	= undefined;
 	this.addJChar 	= function(jChar)
 	{
 		this.jCharArr.push(jChar);
@@ -313,6 +341,19 @@ function JBlock(blockChar, chance)
 	this.get = function(i)
 	{
 		return this.jCharArr[i];
+	}
+	this.setAchievementID = function(s)
+	{
+		this.achievementId = s;
+	}
+	this.getAchievementID = function()
+	{
+		return this.achievementId;
+	}
+	this.unlockAchievement = function()
+	{
+		g.unlockAchievement(this.getAchievementID());
+		g.revealAchievement(this.next.getAchievementID());
 	}
 	this.getRandom = function(i)
 	{
@@ -418,6 +459,7 @@ function JAll()
 {
 	this.jBlockArr = [];
 	this.currentBlock = 0;
+	this.lastAchievement = "CgkI-byp9IcCEAIQHA";
 	this.getBlock = function(i)
 	{
 		return this.jBlockArr[i];
@@ -436,9 +478,17 @@ function JAll()
 	}
 	this.calculateNewChances = function()
 	{
+		if(this.isGameFinished())
+		{
+			for(var i = 0; i < this.size(); i++)
+			{
+				this.setChance(i,1/this.size());
+			}
+			return;
+		}
 		var scoreCurrentBlock = this.getCurrentBlock().getScore();
 		
-		if(scoreCurrentBlock > 90)
+		if(scoreCurrentBlock > 95)
 		{
 			this.findLastActiveBlock();
 			return;
@@ -466,11 +516,35 @@ function JAll()
 	}
 	this.setChance = function(i,c)
 	{
-		this.jBlockArr[i].setChance(c);
+		this.getBlock(i).setChance(c);
 	}
 	this.size = function()
 	{
 		return this.jBlockArr.length;
+	}
+	this.getGameScore = function()
+	{
+		var score = 0;
+		for(var i = 0; i < this.size(); i++)
+		{
+			score += this.getBlock(i).getScore();
+		}
+ 		return score/this.size();
+	}
+	this.isGameFinished = function()
+	{
+		if(this.currentBlock < this.size() - 1)
+			return false;
+		var score = true;
+		for(var i = this.currentBlock; i >= 0; i--)
+		{
+			if(this.getBlock(i).getScore() < 100)
+			{
+				score = false;
+				break;
+			}
+		}
+ 		return score;
 	}
 	this.addJBlock = function(jBlock)
 	{
@@ -544,26 +618,22 @@ function JAll()
 			}
 			saveObj[jBlock.blockChar] = block;
 		}
-		return JSON.stringify({timestamp: new Date().getTime(), data: saveObj});
+		return JSON.stringify({timestamp: new Date().getTime(), gameScore: this.getGameScore(), data: saveObj});
 	};
 	this.save = function(jsonData)
 	{
 		var saveObj = jsonData || this.getJSON();
-		localStorage.japanese = saveObj ;
+		localStore.setJSON(saveObj);
 		return saveObj;
 	}
-	this.load = function(externalJsonData)
+	this.load = function()
 	{
-		var nullTime 			= JSON.stringify({timestamp: 0});
-		var externalJsonData 	= externalJsonData || nullTime;
-		var internalJsonData 	= localStorage.japanese || nullTime;
-		var loadExternal 		= JSON.parse(externalJsonData);
+		var nullTimeObj			= {timestamp: 0, gameScore: 0}
+		var nullTimeJSON		= JSON.stringify(nullTimeObj);
+		var internalJsonData 	= localStore.getJSON() || nullTimeJSON;
 		var loadInternal 		= JSON.parse(internalJsonData);
 
- 		var newestData			= loadExternal.timestamp > loadInternal.timestamp ? loadExternal : loadInternal;
-		if(newestData.timestamp == 0) return;
-
-		var saveObj = newestData.data;
+		var saveObj = loadInternal.data;
 		for(var i = 0; i < this.jBlockArr.length; i++)
 		{
 			var jBlock = this.jBlockArr[i];
@@ -647,9 +717,21 @@ var nextQuestion = function()
 	var time = end - start;
 	printDebug('Execution time: ' + time);
 }
+var Local = function()
+{
+	this.data = "LearnKana";
+	this.getJSON = function()
+	{
+		return localStorage.getItem(this.data);
+	}
+	this.setJSON = function(jsonData)
+	{
+		localStorage.setItem(this.data, jsonData);
+	}
+}
 var GApi = function(){
 	this.clientId 	= "70842474105-h9e3dv7a6kfv3jtdcr6f8fnjv9o6nfla.apps.googleusercontent.com";
-	this.scopes 	= "https://www.googleapis.com/auth/drive.appdata";
+	this.scopes 	= "https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/games";
 	this.data 		= {};
 	this.data.name 	= "LearnKanaProgress.txt";
 	this.parents 	= ["appDataFolder"];
@@ -716,9 +798,36 @@ var GApi = function(){
 	}
 	this.loadFromDrive = function(){
 		gapi.client.drive.files.get({fileId: this.data.id, alt: "media"}).execute(function(f){
-			chars.load(JSON.stringify(f.result));
+			var externalObj = f.result;
+			var localJSON	= localStore.getJSON() || JSON.stringify({timestamp: 0, gameScore: 0});
+			var localObj	= JSON.parse(localJSON);
+			
+			var localGameScore 		= localObj.gameScore || 0;
+			var externalGameScore	= externalObj.gameScore || 0;
+			
+			if(externalGameScore > localGameScore)
+			{
+				localStore.setJSON(JSON.stringify(externalObj));
+	 			chars.load();
+				nextQuestion();
+			}
 		});	
 	};
+	this.unlockAchievement = function(achievementId)
+	{
+		this.achManager.unlockAchievement(achievementId);
+	}
+	this.revealAchievement = function(achievementId)
+	{
+		gapi.client.games.achievements.reveal({achievementId: achievementId}).execute(function(resp){console.log(resp);});
+	}
+	this.purgeData = function(please)
+	{
+		if(please === "purge")
+		{
+			gapi.client.drive.files.delete({fileId:this.data.id}).execute()
+		}
+	}
 
 	this.getAccessToken = function()
 	{
@@ -726,12 +835,19 @@ var GApi = function(){
 			return gapi.auth.getToken().access_token;
 		}
 	}
+	this.loadAchievementManager = function()
+	{
+		this.achManager = {};
+this.achManager.achievements={};var that=this;this.achManager.preloaded=!1,this.achManager.loadData=function(){var e=gapi.client.games.achievementDefinitions.list();e.execute(function(e){if(console.log("Achievement definitions",e),"games#achievementDefinitionsListResponse"==e.kind&&e.hasOwnProperty("items")){for(var a=0;a<e.items.length;a++)that.achManager.achievements[e.items[a].id]=e.items[a],that.achManager.achievements[e.items[a].id].achievementState=e.items[a].initialState;that.achManager.loadAchievementsEarnedByPlayer()}})},this.achManager.clearData=function(){this.achManager.achievements={},this.achManager.preloaded=!1},this.achManager.loadAchievementsEarnedByPlayer=function(){var e=gapi.client.games.achievements.list({playerId:"me"});e.execute(function(e){if(console.log("Your achievement data: ",e),"games#playerAchievementListResponse"==e.kind&&e.hasOwnProperty("items"))for(var a=0;a<e.items.length;a++){var t=e.items[a];that.achManager.achievements[t.id].achievementState=t.achievementState,t.hasOwnProperty("formattedCurrentStepsString")&&(that.achManager.achievements[t.id].formattedCurrentStepsString=t.formattedCurrentStepsString)}else console.log("**Unexpected response **",e)}),this.preloaded=!0},this.achManager.unlockAchievement=function(e){var a=gapi.client.games.achievements.unlock({achievementId:e});a.execute(function(a){console.log("Data from earning achievement is ",a),a.newlyUnlocked?(that.showAchievementWidget(e),that.achManager.loadAchievementsEarnedByPlayer()):console.log("You unlocked "+that.achManager.achievements[e].name+" but you already unlocked it earlier.")})},this.showAchievementWidget=function(e){var a=$("#achUnlocked");a.find("img").prop("src",this.achManager.achievements[e].unlockedIconUrl),a.find("#achDescrip").html(this.achManager.achievements[e].description),a.slideDown(),a.delay(2e3).slideUp()};
+		this.achManager.loadData();
 
+	}
 	this.authorizedFunc = function(res)
 	{
 		this.authorized = res;
 		var that = this;
 		gapi.client.load('drive', 'v3', function(res){that.findFileId()})
+		gapi.client.load('games', 'v1', function(res){that.loadAchievementManager()})
 	}
 	this.checkAuth = function(){
 		var config = {
@@ -754,9 +870,11 @@ function signOut() {
 	});
 }
 $(document).ready(function(){
-	chars = loadCharacters();
-	q = undefined;//chars.getQuestion();
-	if(localStorage.japanese){
+	constants	= {};
+	localStore	= new Local();
+	chars 		= loadCharacters();
+	q 			= undefined;//chars.getQuestion();
+	if(localStore.getJSON()){
 		chars.load();
 	}
 	nextQuestion();

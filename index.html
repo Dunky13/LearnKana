@@ -1,151 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+		<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+		<link rel="shortcut icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
 
-	<meta name="google-signin-client_id" content="70842474105-h9e3dv7a6kfv3jtdcr6f8fnjv9o6nfla.apps.googleusercontent.com" />
-	<meta name="google-signin-cookiepolicy" content="single_host_origin" />
-	<meta name="google-signin-callback" content="signinCallback" />
-	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/drive.appdata" />
-
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Learn Hiragana & Katakana</title>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Open+Sans:300" rel="stylesheet">
-	<style>
-		body{
-			font-family: 'Noto Sans', sans-serif;
-		}
-		.A{
-			display: block;
-			font-size: 4vw;
-		}
-		.Q, .RW{
-			font-size: 5vw;
-		}
-		.NXT {
-			font-size: 3vw;
-			margin-top:1vw;
-		}
-		.top5 { margin-top:5px; }
-		.top7 { margin-top:7px; }
-		.top10 { margin-top:10px; }
-		.top15 { margin-top:15px; }
-		.top17 { margin-top:17px; }
-		.top20 { margin-top:20px; }
-		.top30 { margin-top:30px; }
-		.fa-check {
-			color: green;
-		}
-		.fa-times {
-			color: red;
-		}
+		<meta name="google-signin-client_id" content="70842474105-h9e3dv7a6kfv3jtdcr6f8fnjv9o6nfla.apps.googleusercontent.com" />
+		<meta name="google-signin-cookiepolicy" content="single_host_origin" />
+		<meta name="google-signin-callback" content="signinCallback" />
+		<meta name="google-signin-scope" content="https://www.googleapis.com/auth/drive.appdata" />
 		
-	</style>
-  </head>
-  <body>
-  <a href="https://github.com/Dunky13/LearnKana"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-    <div class="container">
-		<div class="page-header">
-			<h1 class="text-center">Learn Hiragana & Katakana</h1>
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Learn Hiragana & Katakana</title>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Open+Sans:300" rel="stylesheet">
+		<style>
+			body{
+				font-family: 'Noto Sans', sans-serif;
+			}
+			.A{
+				display: block;
+				font-size: 4vw;
+			}
+			.Q, .RW{
+				font-size: 5vw;
+			}
+			.NXT {
+				font-size: 3vw;
+				margin-top:1vw;
+			}
+			.top5 { margin-top:5px; }
+			.top7 { margin-top:7px; }
+			.top10 { margin-top:10px; }
+			.top15 { margin-top:15px; }
+			.top17 { margin-top:17px; }
+			.top20 { margin-top:20px; }
+			.top30 { margin-top:30px; }
+			.fa-check {
+				color: green;
+			}
+			.fa-times {
+				color: red;
+			}
+
+			.medIcon
+			{
+				width: 75px;
+				height: 75px;
+			}
+
+			.smallIcon
+			{
+				width: 65px;
+				height: 65px;
+				padding: 5px;
+				margin-top: 6%;
+			}
+
+			.unlockWidget
+			{
+/* 				position: fixed; */
+/* 				top: 0; */
+/* 				left: 50%; */
+/* 				margin-left: -25%; */
+				background: #FFF;
+/* 				width: 30em; */
+/* 				border: 2px solid #CCC; */
+/* 				border-bottom: 0; */
+				box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="g-signin2" data-onsuccess="onSignIn" style="position: absolute; top: 1vh; left: 1vw; border: 0;"></div>
+		<a href="https://github.com/Dunky13/LearnKana"  style="position: absolute; top: 0; right: 0; border: 0;z-index:-1;"><img src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+		<div class="container">
+			<div class="page-header">
+				<h1 class="text-center" style="text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;">Learn Hiragana & Katakana</h1>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-1"></div>
+					<div class="col-xs-2"></div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-4 Q text-center" id="Q">Q</div>
+					<div class="col-xs-1 RW text-center"><i class="fa correctness"></i></div>
+					<div class="col-xs-2"><button id="next" type="button" class="btn btn-lg btn-primary NXT">Next</button></div>
+					<div class="col-xs-1"></div>
+				</div>
+				<div class="row top10">
+					<div class="col-xs-1"></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A1">A1</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A2">A2</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A3">A3</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A4">A4</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A5">A5</span></div>
+					<div class="col-xs-1"></div>
+				</div>
+				<div class="row top10">
+					<div class="col-xs-1"></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A6">A6</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A7">A7</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A8">A8</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A9">A9</span></div>
+					<div class="col-xs-2"><span class="label label-default A" id="A10">A10</span></div>
+					<div class="col-xs-1"></div>
+				</div>
+
+				<div class="row top30 hiragana-score">
+					<div class="col-xs-1">Hiragana</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">
+								<span class="sr-only"><span class="percentage"></span>% Complete</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row katakana-score">
+					<div class="col-xs-1">Katakana</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">
+								<span class="sr-only"><span class="percentage"></span>% Complete</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row char-score">
+					<div class="col-xs-1">Character Progress</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">
+								<span class="sr-only"><span class="percentage"></span>% Complete</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row block-score">
+					<div class="col-xs-1">Block Progress</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+								<span class="sr-only"><span class="percentage"></span>% Complete</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--    </div>//-->
 		</div>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-1"></div>
-				<div class="col-xs-2"><div class="g-signin2" data-onsuccess="onSignIn"></div></div>
-				<div class="col-xs-1"></div>
-				<div class="col-xs-4 Q text-center" id="Q">Q</div>
-				<div class="col-xs-1 RW text-center"><i class="fa correctness"></i></div>
-				<div class="col-xs-2"><button id="next" type="button" class="btn btn-lg btn-primary NXT">Next</button></div>
-				<div class="col-xs-1"></div>
-			</div>
-			<div class="row top10">
-				<div class="col-xs-1"></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A1">A1</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A2">A2</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A3">A3</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A4">A4</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A5">A5</span></div>
-				<div class="col-xs-1"></div>
-			</div>
-			<div class="row top10">
-				<div class="col-xs-1"></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A6">A6</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A7">A7</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A8">A8</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A9">A9</span></div>
-				<div class="col-xs-2"><span class="label label-default A" id="A10">A10</span></div>
-				<div class="col-xs-1"></div>
-			</div>
-			
-			<div class="row top30 hiragana-score">
-				<div class="col-xs-1">Hiragana</div>
-				<div class="col-xs-1"></div>
-				<div class="col-xs-9">
-					<div class="progress">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">
-							<span class="sr-only"><span class="percentage"></span>% Complete</span>
+		<div class="footer navbar-fixed-bottom"  id="achUnlocked" style='display:none;'>
+			<div class="container unlockWidget">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-4"><img src="" style="float: left;" class="smallIcon"/></div>
+						<div class="col-xs-8">
+							<div class="row"><div class="col-xs-12">Achievement unlocked!</div></div>
+							<!--						<div class="row"><div class="col-xs-12"><span id="achName">Name</span></div></div>//-->
+							<div class="row"><div class="col-xs-12"><span id="achDescrip">Achievement unlocked!</span></div></div>
 						</div>
-				  </div>
-				</div>
-			</div>
-			<div class="row katakana-score">
-				<div class="col-xs-1">Katakana</div>
-				<div class="col-xs-1"></div>
-				<div class="col-xs-9">
-					<div class="progress">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">
-							<span class="sr-only"><span class="percentage"></span>% Complete</span>
-						</div>
-				  </div>
-				</div>
-			</div>
-			<div class="row char-score">
-				<div class="col-xs-1">Character Progress</div>
-				<div class="col-xs-1"></div>
-				<div class="col-xs-9">
-					<div class="progress">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">
-							<span class="sr-only"><span class="percentage"></span>% Complete</span>
-						</div>
-				  </div>
-				</div>
-			</div>
-			<div class="row block-score">
-				<div class="col-xs-1">Block Progress</div>
-				<div class="col-xs-1"></div>
-				<div class="col-xs-9">
-					<div class="progress">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-							<span class="sr-only"><span class="percentage"></span>% Complete</span>
-						</div>
-				  </div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/msgpack-lite/0.1.20/msgpack.min.js"></script>
-	<script src="https://apis.google.com/js/client:platform.js" async defer></script>
-	<script src="js/index.js"></script>
+		<!--<div id="achUnlocked" style="display:none;" class="unlockWidget">
+			<img src="" style="float: left;" class="smallIcon"/>
+			<p><br/>
+				<span id="achName">Name</span><br/>
+				<span id="achDescrip">Achievement unlocked!</span>
+			</p>
+		</div>//-->
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/msgpack-lite/0.1.20/msgpack.min.js"></script>
+		<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+		<script src="js/index.js"></script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+									})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-43774734-7', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+	</body>
   </body>
 </html>
