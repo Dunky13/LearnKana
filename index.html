@@ -49,73 +49,15 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Open+Sans:300" rel="stylesheet">
-		<style>
-			body{
-				font-family: 'Noto Sans', sans-serif;
-			}
-			.A{
-				display: block;
-				font-size: 4vw;
-			}
-			.Q, .RW{
-				font-size: 5vw;
-			}
-			.NXT {
-				font-size: 3vw;
-				margin-top:1vw;
-			}
-			.top5 { margin-top:5px; }
-			.top7 { margin-top:7px; }
-			.top10 { margin-top:10px; }
-			.top15 { margin-top:15px; }
-			.top17 { margin-top:17px; }
-			.top20 { margin-top:20px; }
-			.top30 { margin-top:30px; }
-			.fa-check {
-				color: green;
-			}
-			.fa-times {
-				color: red;
-			}
-
-			.medIcon
-			{
-				width: 75px;
-				height: 75px;
-			}
-
-			.smallIcon
-			{
-				width: 65px;
-				height: 65px;
-				padding: 5px;
-				margin-top: 6%;
-			}
-
-			.unlockWidget
-			{
-/* 				position: fixed; */
-/* 				top: 0; */
-/* 				left: 50%; */
-/* 				margin-left: -25%; */
-				background: #FFF;
-/* 				width: 30em; */
-/* 				border: 2px solid #CCC; */
-/* 				border-bottom: 0; */
-				box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-			}
-
-		</style>
+		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
-		<div class="g-signin2" data-onsuccess="onSignIn" style="position: absolute; top: 1vh; left: 1vw; border: 0;"></div>
-		<a href="https://github.com/Dunky13/LearnKana"  style="position: absolute; top: 0; right: 0; border: 0;z-index:-1;"><img src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+		<div class="g-signin2" data-onsuccess="onSignIn" id="GoogleSignInButton"></div>
+		<a href="https://github.com/Dunky13/LearnKana"  id="GitCloneButton"><img src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 		<div class="container">
 			<div class="page-header">
-				<h1 class="text-center" style="text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;">Learn Kana</h1>
-				<h2 class="text-center" style="text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;">Hiragana & Katakana</h2>
+				<h1 class="text-center title-text">Learn Kana</h1>
+				<h2 class="text-center title-text">Hiragana & Katakana</h2>
 			</div>
 			<div class="container-fluid">
 				<div class="row">
@@ -193,11 +135,11 @@
 			</div>
 			<!--    </div>//-->
 		</div>
-		<div class="footer navbar-fixed-bottom"  id="achUnlocked" style='display:none;'>
+		<div class="footer navbar-fixed-bottom"  id="achUnlocked">
 			<div class="container unlockWidget">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-xs-4"><img src="" style="float: left;" class="smallIcon"/></div>
+						<div class="col-xs-4"><img src="" class="smallIcon" alt="Achievement Icon"/></div>
 						<div class="col-xs-8">
 							<div class="row"><div class="col-xs-12">Achievement unlocked!</div></div>
 							<!--						<div class="row"><div class="col-xs-12"><span id="achName">Name</span></div></div>//-->
@@ -207,13 +149,6 @@
 				</div>
 			</div>
 		</div>
-		<!--<div id="achUnlocked" style="display:none;" class="unlockWidget">
-			<img src="" style="float: left;" class="smallIcon"/>
-			<p><br/>
-				<span id="achName">Name</span><br/>
-				<span id="achDescrip">Achievement unlocked!</span>
-			</p>
-		</div>//-->
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
