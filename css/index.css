@@ -64,11 +64,12 @@ body{
 {
 	text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;
 }
-.smallIcon
-{
+
 #achUnlocked
 {
 	display: none;
 }
+.smallIcon
+{
 	float: left;
 }
