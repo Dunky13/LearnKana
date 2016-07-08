@@ -50,7 +50,9 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Open+Sans:300" rel="stylesheet">
-		<link rel="stylesheet" href="css/index.min.css">
+		
+		<link rel="preload" href="css/index.min.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/index.min.css"></noscript>
 	</head>
 	<body>
 		<div class="g-signin2" data-onsuccess="onSignIn" id="GoogleSignInButton"></div>
