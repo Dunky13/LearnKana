@@ -78,7 +78,7 @@ var GApi = function(){
 			{
 				localStore.setJSON(JSON.stringify(externalObj));
 	 			chars.load();
-				nextQuestion();
+				interface.nextQuestion();
 			}
 		});	
 	};

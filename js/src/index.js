@@ -63,9 +63,9 @@ var Interface = function()
 		var time = end - start;
 		this.printDebug('Execution time: ' + time);
 	}
-	this.clickAnswer = function(){
-		var correct = q.answer($(this).text());
-		if($(this).hasClass("disabled")){return;}
+	this.clickAnswer = function(clickedItem){
+		var correct = q.answer($(clickedItem).text());
+		if($(clickedItem).hasClass("disabled")){return;}
 		if(correct)
 		{
 			$(".A:contains("+correct.romaji+")").toggleClass("label-warning", true);
@@ -74,21 +74,21 @@ var Interface = function()
 			$(".RW .correctness").toggleClass("fa-check",true);
 			$(".RW .correctness").toggleClass("fa-times",false);
 			$(".A").toggleClass("disabled",true);
-			$(this).toggleClass("label-success",true).toggleClass("label-warning",false);
+			$(clickedItem).toggleClass("label-success",true).toggleClass("label-warning",false);
 			$("#next").toggleClass("disabled", false);
 		}
 		else
 		{
 			$(".RW .correctness").toggleClass("fa-check",false);
 			$(".RW .correctness").toggleClass("fa-times",true);
-			$(this).toggleClass("label-danger",true);
+			$(clickedItem).toggleClass("label-danger",true);
 			$("#next").toggleClass("disabled", true);
 		}
 		this.updateScore();
 	}
-	this.clickNext = function(){
-		if(!$(this).hasClass("disabled")){
-			this.nextQuestion()
+	this.clickNext = function(clickedItem){
+		if(!$(clickedItem).hasClass("disabled")){
+			this.nextQuestion();
 		}
 	}
 	this.loadCharacters = function(){

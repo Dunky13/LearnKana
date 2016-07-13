@@ -36,8 +36,8 @@ require(['code'], function (a) {
 		}
 		interface.nextQuestion();
 
-		$(".A").click(interface.clickAnswer);
-		$("#next").click(interface.clickNext);
+		$(".A").click(function(){interface.clickAnswer(this);});
+		$("#next").click(function(){interface.clickNext(this);});
 		$(window).on('beforeunload', function(){
 			g.saveToDrive();
 			//return "Are you sure you want to leave?";
