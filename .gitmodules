@@ -1,0 +1,3 @@
+[submodule "sitemap_generator"]
+	path = sitemap_generator
+	url = git://github.com/Dunky13/PHP-Sitemap-Generator.git
