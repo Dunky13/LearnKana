@@ -109,7 +109,7 @@ function JAll()
 		{
 			var jBlock = this.getBlock(i);
 			var jBlockChance = jBlock.getChance() * 10;
-			for(var j = 0; j < jBlock.getNumOfChar(); j++)
+			for(var j = 0; j < jBlock.size(); j++)
 			{
 				var jChar = jBlock.getChar(j);
 				var jCharChance = jChar.getChance() * 100;

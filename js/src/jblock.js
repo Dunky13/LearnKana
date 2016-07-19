@@ -21,15 +21,15 @@ function JBlock(blockChar, chance)
 	{
 		this.chance = c;
 	}
-	this.getNumOfChar = function()
-	{
-		return this.jCharArr.length;
-	}
-	this.getChar = function(i)
+	this.getChar = function(i) //Same as get()
 	{
 		if(i < 0 || i >= this.jCharArr.length)
 			return undefined;
 		return this.jCharArr[i];
+	}
+	this.get = function(i)
+	{
+		return this.getChar(i);
 	}
 	this.getChars = function()
 	{
@@ -38,10 +38,6 @@ function JBlock(blockChar, chance)
 	this.size = function()
 	{
 		return this.jCharArr.length;
-	}
-	this.get = function(i)
-	{
-		return this.jCharArr[i];
 	}
 	this.setAchievementID = function(s)
 	{
